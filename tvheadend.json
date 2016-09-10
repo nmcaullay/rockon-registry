@@ -1,0 +1,55 @@
+{
+    "TVHeadend": {
+        "containers": {
+            "TVHeadend": {
+                "image": "nmcaullay/tvheadend-unstable",
+                "launch_order": 1,
+                "opts": [
+                    [
+                        "--net=host",
+                        ""
+                    ]
+                ],
+                "ports": {
+                    "9981": {
+                        "description": "TVHeadend Server WebUI port. Suggested default: 9981",
+                        "host_default": 9981,
+                        "label": "WebUI port",
+                        "protocol": "tcp",
+                        "ui": true
+                    }
+                },
+                "volumes": {
+                    "/config": {
+                        "description": "Choose a Share for the TVHeadend Server configuration. Eg: create a Share called TVHeadend-config for this purpose alone.",
+                        "label": "Config Storage"
+                    },
+                    "/media": {
+                        "description": "Choose a Share with media content. Eg: create a Share called TVHeadend-media for this purpose alone or use an existing share. It will be available as /media inside Emby.",
+                        "label": "Media Storage"
+                    }
+                },
+                "environment": {
+                    "APP_UID": {
+                        "description": "Enter a valid UID of an existing user with permission to media shares to run TVHeadend as.",
+                        "label": "UID to run TVHeadend Server as.",
+                        "index": 1
+                    },
+                    "APP_GID": {
+                        "description": "Enter a valid GID of an exisiting user with permission to media shares to run TVHeadend as.",
+                        "label": "GID to run TVHeadend Server as.",
+                        "index": 2
+                    }
+                }
+            }
+        },
+        "description": "TVHeadend media server",
+        "more_info": "",
+        "ui": {
+            "slug": ""
+        },
+        "volume_add_support": true,
+        "website": "http://tvheadend.org/",
+        "version": "1.0"
+    }
+}
